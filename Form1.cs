@@ -190,16 +190,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -211,10 +208,10 @@ namespace deneme2
                 }
                 string channel = "FAM";
                 string hpvType = "HPV33";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -237,16 +234,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -258,10 +255,10 @@ namespace deneme2
                 }
                 string channel = "FAM";
                 string hpvType = "HPV58";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -284,16 +281,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -305,10 +302,10 @@ namespace deneme2
                 }
                 string channel = "FAM";
                 string hpvType = "HPV52";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -331,16 +328,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -352,10 +349,10 @@ namespace deneme2
                 }
                 string channel = "FAM";
                 string hpvType = "HPV59";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -381,16 +378,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -402,10 +399,10 @@ namespace deneme2
                 }
                 string channel = "HEX";
                 string hpvType = "HPV68";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel , hpvType);
@@ -428,16 +425,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -449,10 +446,10 @@ namespace deneme2
                 }
                 string channel = "HEX";
                 string hpvType = "HPV35";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -475,16 +472,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -496,10 +493,10 @@ namespace deneme2
                 }
                 string channel = "HEX";
                 string hpvType = "Internal Control";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -525,16 +522,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -546,10 +543,10 @@ namespace deneme2
                 }
                 string channel = "ROX";
                 string hpvType = "HPV45";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -572,16 +569,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -593,10 +590,10 @@ namespace deneme2
                 }
                 string channel = "ROX";
                 string hpvType = "HPV18";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -619,16 +616,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -640,10 +637,10 @@ namespace deneme2
                 }
                 string channel = "ROX";
                 string hpvType = "HPV16";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -666,16 +663,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -687,10 +684,10 @@ namespace deneme2
                 }
                 string channel = "ROX";
                 string hpvType = "HPV31";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -716,16 +713,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -737,10 +734,10 @@ namespace deneme2
                 }
                 string channel = "Cy5";
                 string hpvType = "HPV66";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -763,16 +760,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -784,10 +781,10 @@ namespace deneme2
                 }
                 string channel = "Cy5";
                 string hpvType = "HPV56";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -810,16 +807,16 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        // Artış tespit et
+                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -831,10 +828,10 @@ namespace deneme2
                 }
                 string channel = "Cy5";
                 string hpvType = "HPV39";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
@@ -857,16 +854,14 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                    // X ekseninde belirli bir aralıkta mı kontrol et
+                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
-                    {
-                        // Artış tespit et
+                    {                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
-
-                        // Artıştan sonra azalış tespit et
+                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -878,10 +873,10 @@ namespace deneme2
                 }
                 string channel = "Cy5";
                 string hpvType = "HPV51";
-                string trend = "Negatif";
+                string trend = "Negative";
                 if (increaseDetected && decreaseDetectedAfterIncrease)
                 {
-                    trend = "Pozitif";
+                    trend = "Positive";
                 }
 
                 Helper.WriteToExcel(series.Name, trend, channel, hpvType);
