@@ -68,7 +68,6 @@ namespace deneme2
                 switch (worksheet.Name)
                 {
                     case "FAM":
-                        // FAM sayfası için işlemler
                         ReadExcel(worksheet);
                         AnalyzeSeriesHPV33();
                         AnalyzeSeriesHPV58();
@@ -77,7 +76,6 @@ namespace deneme2
                         chart1.Visible = true;
                         break;
                     case "HEX":
-                        // VIC sayfası için işlemler
                         ReadExcel(worksheet);
                         AnalyzeSeriesHPV68();
                         AnalyzeSeriesHPV35();
@@ -85,7 +83,6 @@ namespace deneme2
                         chart2.Visible = true;
                         break;
                     case "ROX":
-                        // ROX sayfası için işlemler
                         ReadExcel(worksheet);
                         AnalyzeSeriesHPV45();
                         AnalyzeSeriesHPV18();
@@ -94,7 +91,6 @@ namespace deneme2
                         chart3.Visible = true;
                         break;
                     case "Cy5":
-                        // Cy5 sayfası için işlemler
                         ReadExcel(worksheet);
                         AnalyzeSeriesHPV66();
                         AnalyzeSeriesHPV56();
@@ -109,31 +105,27 @@ namespace deneme2
         }
         private void ReadExcel(IXLWorksheet worksheet)
         {
-            // X ekseninde kullanılacak değerleri B sütunundan oku
-            var xValues = worksheet.Column("B").CellsUsed().Skip(1) // İlk satırı atla
+            var xValues = worksheet.Column("B").CellsUsed().Skip(1)
                            .Select(cell => cell.GetValue<double>()).ToArray();
 
-            // Seri adlarını 1. satırdan C sütunundan itibaren doğrudan oku
-            var lastColumnIndex = worksheet.ColumnsUsed().Last().ColumnNumber(); // Son kullanılan sütunun numarası
+            var lastColumnIndex = worksheet.ColumnsUsed().Last().ColumnNumber();
             var seriesNames = new List<string>();
-            for (int colIndex = 3; colIndex <= lastColumnIndex; colIndex++) // Son sütunu da dikkate al
+            for (int colIndex = 3; colIndex <= lastColumnIndex; colIndex++)
             {
                 var seriesName = worksheet.Cell(1, colIndex).GetValue<string>();
                 seriesNames.Add(seriesName);
             }
 
-            // Her bir seri için döngü
-            for (int colIndex = 3; colIndex <= lastColumnIndex; colIndex++) // Son sütunu da dikkate al
+            for (int colIndex = 3; colIndex <= lastColumnIndex; colIndex++)
             {
-                int seriesNameIndex = colIndex - 3; // C sütunu için 0, D için 1, vs.
+                int seriesNameIndex = colIndex - 3;
 
                 var series = new System.Windows.Forms.DataVisualization.Charting.Series(seriesNames[seriesNameIndex])
                 {
                     ChartType = SeriesChartType.Line
                 };
 
-                // Y değerlerini oku ve seriye ekle
-                var yValues = worksheet.Column(colIndex).CellsUsed().Skip(1) // İlk satırı atla
+                var yValues = worksheet.Column(colIndex).CellsUsed().Skip(1)
                                .Select(cell => cell.GetValue<double>()).ToArray();
                 for (int i = 0; i < yValues.Length; i++)
                 {
