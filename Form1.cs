@@ -1,6 +1,8 @@
 ﻿using ClosedXML.Excel;
+using MeltArrayProject2;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -102,6 +104,11 @@ namespace deneme2
                         break;
                 }
             }
+
+            string resultsFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "AnalysisResults.xlsx");
+            Helper.SaveResultsToExcel(resultsFilePath, analysisResults);
+
+            analysisResults.Clear();
         }
         private void ReadExcel(IXLWorksheet worksheet)
         {
@@ -172,6 +179,7 @@ namespace deneme2
         }
 
         #region Metots
+        private List<AnalysisResult> analysisResults = new List<AnalysisResult>();
         #region AnalyzeSeriesFAMMetots
         private void AnalyzeSeriesHPV33()
         {
@@ -206,15 +214,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "FAM";
                 string hpvType = "HPV33";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV58()
@@ -234,16 +245,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -253,15 +261,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "FAM";
                 string hpvType = "HPV58";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV52()
@@ -281,16 +292,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -300,15 +308,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "FAM";
                 string hpvType = "HPV52";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV59()
@@ -328,16 +339,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -347,15 +355,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "FAM";
                 string hpvType = "HPV59";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         #endregion
@@ -366,7 +377,7 @@ namespace deneme2
             double xLowerBound = 46.78;
             double xUpperBound = 50.91;
 
-            foreach (var series in chart2.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -378,16 +389,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -397,15 +405,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "HEX";
                 string hpvType = "HPV68";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel , hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV35()
@@ -413,7 +424,7 @@ namespace deneme2
             double xLowerBound = 54.15;
             double xUpperBound = 58.90;
 
-            foreach (var series in chart2.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -425,16 +436,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -444,15 +452,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "HEX";
                 string hpvType = "HPV35";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesIC()
@@ -460,7 +471,7 @@ namespace deneme2
             double xLowerBound = 63.03;
             double xUpperBound = 68.26;
 
-            foreach (var series in chart2.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -472,16 +483,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -491,15 +499,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
-                string channel = "HEX";
-                string hpvType = "Internal Control";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                string channel = "HEX";
+                string hpvType = "IC";
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
+
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         #endregion
@@ -510,7 +521,7 @@ namespace deneme2
             double xLowerBound = 47.64;
             double xUpperBound = 51.44;
 
-            foreach (var series in chart3.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -522,16 +533,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -541,15 +549,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "ROX";
                 string hpvType = "HPV45";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV18()
@@ -557,7 +568,7 @@ namespace deneme2
             double xLowerBound = 57.73;
             double xUpperBound = 62.98;
 
-            foreach (var series in chart3.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -569,16 +580,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -588,15 +596,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "ROX";
                 string hpvType = "HPV18";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV16()
@@ -604,7 +615,7 @@ namespace deneme2
             double xLowerBound = 64.00;
             double xUpperBound = 68.15;
 
-            foreach (var series in chart3.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -616,16 +627,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -635,15 +643,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "ROX";
                 string hpvType = "HPV16";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV31()
@@ -651,7 +662,7 @@ namespace deneme2
             double xLowerBound = 69.19;
             double xUpperBound = 73.03;
 
-            foreach (var series in chart3.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -663,16 +674,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -682,15 +690,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "ROX";
                 string hpvType = "HPV31";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         #endregion
@@ -701,7 +712,7 @@ namespace deneme2
             double xLowerBound = 45.97;
             double xUpperBound = 49.54;
 
-            foreach (var series in chart4.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -713,16 +724,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -732,15 +740,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "Cy5";
                 string hpvType = "HPV66";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV56()
@@ -748,7 +759,7 @@ namespace deneme2
             double xLowerBound = 56.98;
             double xUpperBound = 61.42;
 
-            foreach (var series in chart4.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -760,16 +771,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -779,15 +787,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "Cy5";
                 string hpvType = "HPV56";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV39()
@@ -795,7 +806,7 @@ namespace deneme2
             double xLowerBound = 63.21;
             double xUpperBound = 67.83;
 
-            foreach (var series in chart4.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -807,16 +818,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
                     {
-                        
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
 
-                        
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -826,15 +834,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "Cy5";
                 string hpvType = "HPV39";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         private void AnalyzeSeriesHPV51()
@@ -842,7 +853,7 @@ namespace deneme2
             double xLowerBound = 68.68;
             double xUpperBound = 73.81;
 
-            foreach (var series in chart4.Series)
+            foreach (var series in chart1.Series)
             {
                 bool increaseDetected = false;
                 bool decreaseDetectedAfterIncrease = false;
@@ -854,14 +865,13 @@ namespace deneme2
                     double currentX = point.XValue;
                     double currentY = point.YValues[0];
 
-                  
                     if (currentX >= xLowerBound && currentX <= xUpperBound)
-                    {                        
+                    {
                         if (!double.IsNaN(lastYValue) && currentY > lastYValue)
                         {
                             increaseDetected = true;
                         }
-                        
+
                         if (increaseDetected && !double.IsNaN(lastYValue) && currentY < lastYValue - 5.00)
                         {
                             decreaseDetectedAfterIncrease = true;
@@ -871,15 +881,18 @@ namespace deneme2
                         lastYValue = currentY;
                     }
                 }
+
                 string channel = "Cy5";
                 string hpvType = "HPV51";
-                string trend = "Negative";
-                if (increaseDetected && decreaseDetectedAfterIncrease)
-                {
-                    trend = "Positive";
-                }
+                string trend = increaseDetected && decreaseDetectedAfterIncrease ? "Positive" : "Negative";
 
-                Helper.WriteToExcel(series.Name, trend, channel, hpvType);
+                analysisResults.Add(new AnalysisResult
+                {
+                    SeriesName = series.Name,
+                    Trend = trend,
+                    Channel = channel,
+                    HpvType = hpvType
+                });
             }
         }
         #endregion

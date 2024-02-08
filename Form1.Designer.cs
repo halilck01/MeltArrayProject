@@ -58,19 +58,19 @@
             // lblSelect
             // 
             this.lblSelect.AutoSize = true;
-            this.lblSelect.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSelect.Location = new System.Drawing.Point(66, 22);
+            this.lblSelect.Font = new System.Drawing.Font("Microsoft YaHei", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSelect.Location = new System.Drawing.Point(102, 30);
             this.lblSelect.Name = "lblSelect";
-            this.lblSelect.Size = new System.Drawing.Size(227, 31);
+            this.lblSelect.Size = new System.Drawing.Size(198, 27);
             this.lblSelect.TabIndex = 0;
             this.lblSelect.Text = "Select File Name : ";
             // 
             // txtFileName
             // 
             this.txtFileName.Enabled = false;
-            this.txtFileName.Location = new System.Drawing.Point(446, 31);
+            this.txtFileName.Location = new System.Drawing.Point(322, 31);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(286, 22);
+            this.txtFileName.Size = new System.Drawing.Size(429, 22);
             this.txtFileName.TabIndex = 1;
             this.txtFileName.Click += new System.EventHandler(this.txtFileName_Click);
             // 
@@ -78,9 +78,9 @@
             // 
             this.btnSelect.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSelect.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSelect.Location = new System.Drawing.Point(767, 12);
+            this.btnSelect.Location = new System.Drawing.Point(808, 20);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(201, 55);
+            this.btnSelect.Size = new System.Drawing.Size(231, 43);
             this.btnSelect.TabIndex = 2;
             this.btnSelect.Text = "Select";
             this.btnSelect.UseVisualStyleBackColor = false;
@@ -91,9 +91,9 @@
             this.btnTransfer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnTransfer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnTransfer.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTransfer.Location = new System.Drawing.Point(1004, 12);
+            this.btnTransfer.Location = new System.Drawing.Point(1065, 20);
             this.btnTransfer.Name = "btnTransfer";
-            this.btnTransfer.Size = new System.Drawing.Size(202, 55);
+            this.btnTransfer.Size = new System.Drawing.Size(230, 43);
             this.btnTransfer.TabIndex = 7;
             this.btnTransfer.Text = "Result";
             this.btnTransfer.UseVisualStyleBackColor = false;
@@ -180,7 +180,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1573, 1033);
             this.Controls.Add(this.chart4);
             this.Controls.Add(this.chart3);
