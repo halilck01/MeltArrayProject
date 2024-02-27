@@ -186,7 +186,7 @@ namespace deneme2
         private List<AnalysisResult> analysisResults = new List<AnalysisResult>();
         private void AnalyzeSeriesHPV(string channel, string hpvType, double xLowerBound, double xUpperBound, Chart selectedChart)
         {
-            double threshold = 20.00; // Yeni threshold değeri
+            double threshold = 20.00;
 
             foreach (var series in selectedChart.Series)
             {
@@ -197,7 +197,6 @@ namespace deneme2
                 int lowerBoundIndex = -1;
                 int upperBoundIndex = -1;
 
-                // İlk olarak, xLowerBound ve xUpperBound değerlerine karşılık gelen Y değerlerini ve indekslerini bul
                 for (int i = 0; i < series.Points.Count; i++)
                 {
                     double xValue = series.Points[i].XValue;
@@ -206,7 +205,6 @@ namespace deneme2
                     else if (xValue == xUpperBound) { upperBoundY = yValue; upperBoundIndex = i; }
                 }
 
-                // xLowerBound ve xUpperBound arasındaki maksimum Y değerini ve minimum Y değerini bul
                 if (lowerBoundIndex != -1 && upperBoundIndex != -1)
                 {
                     for (int i = lowerBoundIndex + 1; i < upperBoundIndex; i++)
@@ -217,10 +215,8 @@ namespace deneme2
                     }
                 }
 
-                // Kontroller: Maksimum Y değeri, lowerBoundY ve upperBoundY değerlerinden büyük mü ve farklar 20.00'den büyük mü
                 bool isPositive = maxBetweenY > lowerBoundY && maxBetweenY > upperBoundY && (maxBetweenY - lowerBoundY > threshold || maxBetweenY - upperBoundY > threshold);
 
-                // Eğer artış ve azalış koşulları sağlanıyorsa ve belirtilen farklar büyükse, analiz sonuçlarına ekle
                 if (isPositive)
                 {
                     analysisResults.Add(new AnalysisResult
