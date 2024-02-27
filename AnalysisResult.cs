@@ -12,5 +12,6 @@ namespace MeltArrayProject2
         public string Trend { get; set; }
         public string Channel { get; set; }
         public string HpvType { get; set; }
+        public string PeakValue { get; set; }
     }
 }
